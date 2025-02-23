@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Pessoar : Node2D
+public class Player : KinematicBody2D
 {
 	// Declare member variables here. Examples:
 	// private int a = 2;
@@ -9,9 +9,9 @@ public class Pessoar : Node2D
 	private Vector2 MovementDirection = Vector2.Zero;
 	private const float DEFAULT_MOVEMENT_SPEED = 100;
 	public static float MaxMovementSpeed = 100;
-	private float Speed = 100;
+	private float Speed = 110;
 	private float Acceleration = 20;
-	private float Friction = MaxMovementSpeed/24;
+	private float Friction = 1;
 	
 	// Called when the node enters the scene tree for the first time.
 	
@@ -34,15 +34,16 @@ public class Pessoar : Node2D
 	{
 		ReduceAcceleration();
 	}
-	else if (Math.Abs(Speed) < MaxMovementSpeed)
+	else if ((Math.Abs(Speed) < MaxMovementSpeed) || (MovementDirection.x != (Speed/Math.Abs(Speed))))
 	{
 		Speed += Acceleration*MovementDirection.x;
 	}
+
 	
 	CorrectSpeed();
 	GD.Print(Speed);
 	GD.Print(Friction);
-	Position += new Vector2(1,0)*Speed*delta;
+	MoveAndSlide(new Vector2(1,0)*Speed);
   }
 
   private void CorrectSpeed()
