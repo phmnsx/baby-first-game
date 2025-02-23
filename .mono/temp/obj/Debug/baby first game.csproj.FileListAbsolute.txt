@@ -7,3 +7,4 @@ C:\Users\Pedro\Desktop\meus porjeto\baby-first-game\.mono\temp\bin\Debug\baby fi
 C:\Users\Pedro\Desktop\meus porjeto\baby-first-game\.mono\temp\bin\Debug\baby first game.pdb
 C:\Users\Pedro\Desktop\meus porjeto\baby-first-game\.mono\temp\obj\Debug\baby first game.dll
 C:\Users\Pedro\Desktop\meus porjeto\baby-first-game\.mono\temp\obj\Debug\baby first game.pdb
+C:\Users\Pedro\Desktop\meus porjeto\baby-first-game\.mono\temp\obj\Debug\baby first game.sourcelink.json
