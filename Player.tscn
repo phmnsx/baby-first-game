@@ -4,15 +4,16 @@
 [ext_resource path="res://Player.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 252.75, 252.75 )
+extents = Vector2( 215.5, 177.875 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 460, 263 )
+position = Vector2( 436.5, 188.125 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 476, 264 )
+position = Vector2( 438, 186 )
+scale = Vector2( 0.851563, 0.695313 )
 texture = ExtResource( 1 )
