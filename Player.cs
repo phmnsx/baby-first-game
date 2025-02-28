@@ -33,8 +33,8 @@ public class Player : KinematicBody2D
   {
 	MovementDirection = Vector2.Zero;
 	GD.Print(Speed.y);
-	if (IsOnFloor()) { CurrentJumpAmmount = JumpAmmount; Speed.y = 0; }
-	
+	if (IsOnFloor()) { CurrentJumpAmmount = JumpAmmount; Speed.y = 0; } //No chão, resete quantidade de pulos
+																		//e Velocidade Y = 0
 	if (Input.IsActionPressed("Up") && (CurrentJumpAmmount > 0) && (JumpTimePressed < 0.3))
 	{ 
 		JumpTimePressed += delta;
@@ -48,13 +48,13 @@ public class Player : KinematicBody2D
 	if (Input.IsActionPressed("Left")) { MovementDirection += new Vector2(-1,0); }
 	if (Input.IsActionPressed("Right")) { MovementDirection += new Vector2(1,0); }
 	
-	if (MovementDirection == Vector2.Zero) { ReduceAcceleration(); }
+	if (MovementDirection == Vector2.Zero) { ReduceAcceleration(); } //Se não anda, reduza velocidade
 	else if ((Math.Abs(Speed.x) < MaxMovementSpeed) || (MovementDirection.x != (Speed.x/Math.Abs(Speed.x))))
 	{
 		Speed.x += Acceleration*MovementDirection.x;
 	}
 	
-	CorrectSpeed();
+	CorrectSpeed(); //Corrigir velocidade caso seja maior que o máximo
 	
 	MoveAndSlide(Speed, new Vector2(0,-1));
   }
@@ -64,6 +64,8 @@ public class Player : KinematicBody2D
   {
 	if (Math.Abs(Speed.x) > MaxMovementSpeed)
   	{ Speed.x += (-1)*Friction*MovementDirection.x ; }
+	if (Math.Abs(Speed.y) > MAX_FALL_SPEED)
+  	{ Speed.y += (-1)*Friction; }
 	return;
   }
   private void ReduceAcceleration()
